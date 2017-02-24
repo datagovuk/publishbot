@@ -3,7 +3,7 @@
 # If you change this, run `make clean`. Read more: https://git.io/vM7zV
 IMPORT_PATH := github.com/datagovuk/publishbot
 
-# V := 1 # When V is set, print commands and build progress.
+V := 1 # When V is set, print commands and build progress.
 
 # Space separated patterns of packages to skip in list, test, format.
 IGNORED_PACKAGES := /vendor/
@@ -13,7 +13,8 @@ all: build
 
 .PHONY: build
 build: .GOPATH/.ok
-	$Q go install $(if $V,-v) $(VERSION_FLAGS) $(IMPORT_PATH)
+	$Q go build $(if $V,-v) $(VERSION_FLAGS) $(IMPORT_PATH)/adapters
+	$Q go install $(if $V,-v) $(VERSION_FLAGS)  $(IMPORT_PATH)
 
 ### Code not in the repository root? Another binary? Add to the path like this.
 # .PHONY: otherbin
