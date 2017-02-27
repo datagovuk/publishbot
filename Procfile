@@ -1,2 +1,2 @@
-program: ./bin/linux_amd64/publishbot
+web: ./bin/linux_amd64/publishbot
 
