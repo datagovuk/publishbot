@@ -1,2 +1,2 @@
-program: sh -c 'make && bin/publishbot'
+program: bin/publishbot
 

@@ -25,5 +25,4 @@ _testmain.go
 *.prof
 
 /.GOPATH
-/bin
 
