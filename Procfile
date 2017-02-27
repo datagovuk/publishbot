@@ -1,2 +1,2 @@
-web: sh -c 'make && ./bin/publishbot'
+program: sh -c 'make && bin/publishbot'
 
