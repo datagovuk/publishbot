@@ -1,0 +1,82 @@
+
+
+{{define "title"}}Current Status{{end}}
+
+{{define "breadcrumbs"}}
+    <li><a href="/">Publishbot</a></li>
+    <li><a href="/status">Current Status</a></li>
+    <li>Preview + Publish</li>
+{{end}}
+
+{{define "body"}}
+
+<style>
+.heading-large { margin-top: 0; }
+.heading-xlarge { margin-top: 0; }
+</style>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+      Spend over £25,000
+      </h1>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <p class="lede">
+        A monthly-updated list of all financial transactions spending over £25,000 made by department, as part of the Government's commitment to transparency in expenditure
+      </p>
+    </div>
+    <div class="column-one-third">
+        <span class="bold-small">Preview required:</span> Yes<br/>
+        <span class="bold-small">Last run:</span> Today<br/>
+        <span class="bold-small">Next run:</span> Next month<br/>
+    </div>
+  </div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Supplier</th>
+      <th scope="col">Reference</th>
+      <th scope="col">Date</th>
+      <th class="numeric" scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACME Inc</td>
+      <td>A12345</td>
+      <td>01/01/2017</td>
+      <td class="numeric">31,792</td>
+    </tr>
+    <tr>
+      <td>ACME Inc</td>
+      <td>A12346</td>
+      <td>08/01/2017</td>
+      <td class="numeric">35,740</td>
+    </tr>
+    <tr>
+      <td>ACME Inc</td>
+      <td>A12347</td>
+      <td>11/01/2017</td>
+      <td class="numeric">26,683</td>
+    </tr>
+  </tbody>
+</table>
+
+  <br/>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <button class="button">Publish</button>
+      &nbsp;
+      <a style="font-size:smaller;" href="/status">Cancel</a>
+    </div>
+  </div>
+
+
+
+{{end}}

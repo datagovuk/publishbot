@@ -1,0 +1,80 @@
+{{define "layout"}}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/gov-uk-template.css">
+  <link rel="stylesheet" href="/static/css/elements.css">
+  <title>{{template "title"}}</title>
+</head>
+<body>
+
+    <div id="skiplink-container">
+      <div>
+        <a href="#content" class="skiplink">Skip to main content</a>
+      </div>
+    </div>
+
+    <header role="banner" id="global-header" class="
+  with-proposition
+">
+      <div class="header-wrapper">
+        <div class="header-global">
+          <div class="header-logo">
+            <a href="https://data.gov.uk" title="Go to data.gov.uk" id="logo" class="content">
+                Data.gov.uk
+            </a>
+          </div>
+
+        </div>
+
+        <div class="header-proposition">
+            <div class="content">
+                <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+                <nav id="proposition-menu">
+                  <a href="/" id="proposition-name">Publishbot</a>
+                </nav>
+            </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="global-header-bar"></div>
+
+    <main class="elements-index" id="content" role="main" tabindex="-1">
+      <div class="breadcrumbs">
+      <ol>
+            {{template "breadcrumbs"}}
+      </ol>
+    </div>
+
+    {{template "body"}}
+    </main>
+
+    <footer class="group js-footer" id="footer" role="contentinfo">
+
+      <div class="footer-wrapper">
+
+
+        <div class="footer-meta">
+          <div class="footer-meta-inner">
+
+
+            <div class="open-government-licence">
+              <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+
+                <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+
+            </div>
+          </div>
+
+          <div class="copyright">
+            <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">&copy; Crown copyright</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>
+{{end}}
