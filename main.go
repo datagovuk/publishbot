@@ -9,6 +9,8 @@ import (
 func main() {
 
 	setup_routes()
+	open_db()
+	defer close_db()
 
 	port := os.Getenv("PORT")
 	if len(port) == 0 {

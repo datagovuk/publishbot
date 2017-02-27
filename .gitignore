@@ -27,3 +27,5 @@ _testmain.go
 /.GOPATH
 
 bin/
+db.sqlite3
+
