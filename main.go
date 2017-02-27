@@ -36,8 +36,8 @@ func main() {
 	http.HandleFunc("/preview", BasicAuth(preview, username, password))
 	http.HandleFunc("/", BasicAuth(homepage, username, password))
 
-	log.Println("Listening...")
-	http.ListenAndServe(":"+port, nil)
+	log.Println("Listening... on 0.0.0.0:" + port)
+	http.ListenAndServe("0.0.0.0:"+port, nil)
 }
 
 func homepage(w http.ResponseWriter, r *http.Request) {
