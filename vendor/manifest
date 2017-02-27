@@ -34,6 +34,14 @@
 			"notests": true
 		},
 		{
+			"importpath": "github.com/gorilla/schema",
+			"repository": "https://github.com/gorilla/schema",
+			"vcs": "git",
+			"revision": "64644a2fced21dbfa12f7ca184bdcedeb2513dd4",
+			"branch": "master",
+			"notests": true
+		},
+		{
 			"importpath": "github.com/mattn/go-sqlite3",
 			"repository": "https://github.com/mattn/go-sqlite3",
 			"vcs": "git",
