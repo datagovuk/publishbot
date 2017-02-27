@@ -7,7 +7,32 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"github.com/gorilla/mux"
 )
+
+func main() {
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "3000"
+	}
+	username := os.Getenv("HTTP_USERNAME")
+	password := os.Getenv("HTTP_PASSWORD")
+
+	r := mux.NewRouter()
+	r.NotFoundHandler = http.HandlerFunc(notFound)
+	r.HandleFunc("/", BasicAuth(homepage, username, password))
+	r.HandleFunc("/preview", BasicAuth(preview, username, password))
+	r.HandleFunc("/status", BasicAuth(status, username, password))
+
+	fs := http.FileServer(http.Dir("static"))
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
+
+	http.Handle("/", r)
+
+	log.Println("Listening... on 0.0.0.0:" + port)
+	http.ListenAndServe("0.0.0.0:"+port, nil)
+}
 
 func BasicAuth(handler http.HandlerFunc, username string, password string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -22,22 +47,9 @@ func BasicAuth(handler http.HandlerFunc, username string, password string) http.
 	}
 }
 
-func main() {
-	port := os.Getenv("PORT")
-	if len(port) == 0 {
-		port = "3000"
-	}
-	username := os.Getenv("HTTP_USERNAME")
-	password := os.Getenv("HTTP_PASSWORD")
-
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
-	http.HandleFunc("/status", BasicAuth(status, username, password))
-	http.HandleFunc("/preview", BasicAuth(preview, username, password))
-	http.HandleFunc("/", BasicAuth(homepage, username, password))
-
-	log.Println("Listening... on 0.0.0.0:" + port)
-	http.ListenAndServe("0.0.0.0:"+port, nil)
+func notFound(w http.ResponseWriter, r *http.Request) {
+	tmpl := get_template("404.html")
+	tmpl.ExecuteTemplate(w, "layout", nil)
 }
 
 func homepage(w http.ResponseWriter, r *http.Request) {
