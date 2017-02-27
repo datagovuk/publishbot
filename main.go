@@ -23,7 +23,10 @@ func BasicAuth(handler http.HandlerFunc, username string, password string) http.
 }
 
 func main() {
-
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "3000"
+	}
 	username := os.Getenv("HTTP_USERNAME")
 	password := os.Getenv("HTTP_PASSWORD")
 
@@ -34,7 +37,7 @@ func main() {
 	http.HandleFunc("/", BasicAuth(homepage, username, password))
 
 	log.Println("Listening...")
-	http.ListenAndServe("127.0.0.1:3000", nil)
+	http.ListenAndServe(":"+port, nil)
 }
 
 func homepage(w http.ResponseWriter, r *http.Request) {
