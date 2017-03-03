@@ -18,6 +18,14 @@
 			"notests": true
 		},
 		{
+			"importpath": "github.com/flosch/pongo2",
+			"repository": "https://github.com/flosch/pongo2",
+			"vcs": "git",
+			"revision": "1d0f0d3af150c4a65dfd424d742f7374819e7d29",
+			"branch": "master",
+			"notests": true
+		},
+		{
 			"importpath": "github.com/gorilla/context",
 			"repository": "https://github.com/gorilla/context",
 			"vcs": "git",
@@ -38,6 +46,14 @@
 			"repository": "https://github.com/gorilla/schema",
 			"vcs": "git",
 			"revision": "64644a2fced21dbfa12f7ca184bdcedeb2513dd4",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/juju/errors",
+			"repository": "https://github.com/juju/errors",
+			"vcs": "git",
+			"revision": "6f54ff6318409d31ff16261533ce2c8381a4fd5d",
 			"branch": "master",
 			"notests": true
 		},

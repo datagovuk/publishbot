@@ -1,12 +1,12 @@
+{% extends "layout.html" %}
 
+{% block title %}Publishbot{% endblock%}
 
-{{define "title"}}Publishbot{{end}}
-
-{{define "breadcrumbs"}}
+{% block breadcrumbs %}
     <li><a href="/">Publishbot</a></li>
-{{end}}
+{% endblock %}
 
-{{define "body"}}
+{% block body %}
 
   <div class="grid-row">
     <div class="column-two-thirds">
@@ -16,23 +16,45 @@
     </div>
   </div>
 
+  <div class="grid-row">
+    <p class="lede column-two-thirds">
+      Automatic publishing of data and datasets to data.gov.uk
+    </p>
+  </div>
 
   <div class="grid-row">
-
-    <div class="column-one-third">
-        <div class="data">
-            <span class="data-item bold-xxlarge"><a href="/status" style="text-decoration:none;">3</a></span>
-            <span class="data-item bold-xsmall">Automated datasets</span>
-        </div>
+    <div class="column-one-half">
+      <h2 class="heading-medium">
+        Pending review (1)
+      </h2>
+      <ul>
+        <li>
+          Spend over £25,000<br/>
+          <a class="button" href="/preview">Preview and publish</a>
+        </li>
+      </ul>
     </div>
+    <div class="column-one-half">
+      <h2 class="heading-medium">
+        Adapters (3)
+      </h2>
+      <div>
+        <ul>
+          <li>
+            Spend over £25,000 - <a href="">Edit</a>
+          </li>
+          <li>
+            Organogram - <a href="">Edit</a>
+          </li>
+          <li>
+            Planning applications - <a href="">Edit</a>
+          </li>
+        </ul>
 
-    <div class="column-one-third">
-        <div class="data">
-            <span class="data-item bold-xxlarge"><a href="/preview" style="text-decoration:none;">1</a></span>
-            <span class="data-item bold-xsmall">Awaiting permission</span>
-        </div>
+        <br/>
+        <a class="button" href="/add">Add a new adapter</a>
+      </div>
     </div>
   </div>
 
-
-{{end}}
+{% endblock %}

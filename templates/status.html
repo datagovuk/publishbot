@@ -1,13 +1,13 @@
+{% extends "layout.html" %}
 
+{% block title %}Current Status{% endblock %}
 
-{{define "title"}}Current Status{{end}}
-
-{{define "breadcrumbs"}}
+{% block breadcrumbs %}
     <li><a href="/">Publishbot</a></li>
     <li>Current Status</li>
-{{end}}
+{% endblock %}
 
-{{define "body"}}
+{% block body%}
 
 <style>
 .heading-large { margin-top: 0; }
@@ -111,4 +111,4 @@
   </div>
 
 
-{{end}}
+{% endblock %}

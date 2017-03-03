@@ -1,11 +1,10 @@
-{{define "layout"}}
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/css/gov-uk-template.css">
   <link rel="stylesheet" href="/static/css/elements.css">
-  <title>{{template "title"}}</title>
+  <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
@@ -44,11 +43,12 @@
     <main class="elements-index" id="content" role="main" tabindex="-1">
       <div class="breadcrumbs">
       <ol>
-            {{template "breadcrumbs"}}
+            {% block breadcrumbs %}{% endblock%}
       </ol>
     </div>
 
-    {{template "body"}}
+    {% block body %}
+    {% endblock %}
     </main>
 
     <footer class="group js-footer" id="footer" role="contentinfo">
@@ -77,4 +77,3 @@
 
 </body>
 </html>
-{{end}}

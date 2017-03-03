@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}Publishbot{% endblock %}
+
+{% block breadcrumbs %}
+    <li>
+      <a href="/">Publishbot</a>
+    </li>
+    <li>
+      Add adapter
+    </li>
+{% endblock %}
+
+{% block body %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+      Add a new adapter
+      </h1>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <p class="lede column-two-thirds">
+      Choose the type of adapter to add:
+    </p>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-half">
+      <h1 class="heading-medium">
+        Directory watcher
+      </h1>
+      <p>
+      Watches a directory for new files, and uploads those files to
+      the specified dataset.
+      </p>
+      <a href="/add/directory">Use this adapter</a>
+    </div>
+    <div class="column-one-half">
+      <h1 class="heading-medium">
+        Program adapter
+      </h1>
+      <p>
+      Runs an executable program on a schedule. The program is expected to
+      write out the data to be uploaded.
+      </p>
+      <a href="/add/directory">Use this adapter</a>
+    </div>
+  </div>
+
+{% endblock %}
