@@ -20,6 +20,21 @@ git clone git@github.com:datagovuk/publishbot.git
 make test
 ```
 
+## Configuration
+
+You should have a config file, called test.yml for now that contains something like:
+
+```yaml
+host: 127.0.0.1
+port: 2112
+adapters:
+  - name: spending
+    title: Spend data over £25,000
+    type: directory
+    arguments:
+      folder: ./test-folder
+```
+
 ## Compiling cross-platform
 To compile for windows you should use
 
