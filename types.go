@@ -1,4 +1,4 @@
-package adapters
+package main
 
 type Adapter struct {
 	Label       string

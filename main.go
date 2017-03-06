@@ -9,8 +9,6 @@ import (
 func main() {
 
 	setup_routes()
-	open_db()
-	defer close_db()
 
 	loadConfigFile("./test.yml")
 
@@ -27,6 +25,8 @@ func main() {
 		for k, v := range adapter.Arguments {
 			log.Println("      ", k, v)
 		}
+
+		go RunAdapter(adapter)
 	}
 
 	log.Println("\nListening... on 127.0.0.1:" + port)

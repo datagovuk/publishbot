@@ -7,6 +7,8 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+var config Config = Config{}
+
 type AdapterConfig struct {
 	Name      string
 	Title     string
@@ -19,8 +21,6 @@ type Config struct {
 	Port     string
 	Adapters []AdapterConfig
 }
-
-var config Config = Config{}
 
 func loadConfigFile(filename string) {
 	data, err := ioutil.ReadFile(filename)

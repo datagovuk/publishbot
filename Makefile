@@ -13,7 +13,6 @@ all: build
 
 .PHONY: build
 build: .GOPATH/.ok
-	$Q go build $(if $V,-v) $(VERSION_FLAGS) $(IMPORT_PATH)/adapters
 	$Q go install $(if $V,-v) $(VERSION_FLAGS)  $(IMPORT_PATH)
 
 ### Code not in the repository root? Another binary? Add to the path like this.
