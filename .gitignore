@@ -28,4 +28,5 @@ _testmain.go
 
 bin/
 db.sqlite3
+test-folder/
 
