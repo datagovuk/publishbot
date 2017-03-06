@@ -12,8 +12,10 @@ type AdapterConfig struct {
 	Type      string
 	Arguments map[string]string
 }
+
 type Config struct {
 	Host     string
+	Port     string
 	Adapters []AdapterConfig
 }
 

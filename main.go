@@ -12,15 +12,23 @@ func main() {
 	open_db()
 	defer close_db()
 
-	port := os.Getenv("PORT")
-	if len(port) == 0 {
-		port = "3000"
-	}
-
 	loadConfigFile("./test.yml")
 
-	log.Printf("Found %d adapters\n", len(config.Adapters))
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = config.Port
+	}
 
-	log.Println("Listening... on 127.0.0.1:" + port)
+	log.Printf("Found %d adapters\n", len(config.Adapters))
+	for _, adapter := range config.Adapters {
+		log.Println("  Name: ", adapter.Name)
+		log.Println("  Type: ", adapter.Type)
+		log.Println("  Arguments")
+		for k, v := range adapter.Arguments {
+			log.Println("      ", k, v)
+		}
+	}
+
+	log.Println("\nListening... on 127.0.0.1:" + port)
 	http.ListenAndServe("127.0.0.1:"+port, nil)
 }
