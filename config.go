@@ -9,6 +9,7 @@ import (
 
 type AdapterConfig struct {
 	Name      string
+	Title     string
 	Type      string
 	Arguments map[string]string
 }

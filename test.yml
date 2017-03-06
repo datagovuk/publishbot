@@ -1,7 +1,8 @@
 host: 127.0.0.1
 port: 2112
 adapters:
-  - name: Spending
+  - name: spending
+    title: Spend data over £25,000
     type: directory
     arguments:
       folder: ./test-folder
