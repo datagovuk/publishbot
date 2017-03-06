@@ -1,12 +1,16 @@
 package main
 
-import "fmt"
-
-func List() []Adapter {
-	return adapters
-}
+import "log"
 
 func RunAdapter(config AdapterConfig) {
-	fmt.Println("Running", config.Title)
+	log.Println("Running", config.Title)
+	if config.Type == "directory" {
+		directoryAdapter(config)
+	} else {
+		log.Printf("Don't know how to run a %s adapter\n", config.Type)
+	}
+}
+
+func directoryAdapter(config AdapterConfig) {
 
 }

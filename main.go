@@ -1,12 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"log"
-	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 )
 
 func main() {
+	sigs := make(chan os.Signal, 1)
+	done := make(chan bool, 1)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
 	setup_routes()
 
@@ -29,6 +34,15 @@ func main() {
 		go RunAdapter(adapter)
 	}
 
-	log.Println("\nListening... on 127.0.0.1:" + port)
-	http.ListenAndServe("127.0.0.1:"+port, nil)
+	go func() {
+		sig := <-sigs
+		fmt.Println()
+		fmt.Println(sig)
+		done <- true
+	}()
+
+	<-done
+
+	// log.Println("\nListening... on 127.0.0.1:" + port)
+	// http.ListenAndServe("127.0.0.1:"+port, nil)
 }
