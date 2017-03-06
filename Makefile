@@ -30,6 +30,9 @@ build: .GOPATH/.ok
 clean:
 	$Q rm -rf bin .GOPATH
 
+run: build
+	bin/publishbot
+
 test: .GOPATH/.ok
 	$Q go test $(if $V,-v) -i -race $(allpackages) # install -race libs to speed up next run
 ifndef CI
