@@ -2,7 +2,6 @@ package main
 
 import (
 	"crypto/subtle"
-	"log"
 	"net/http"
 	"os"
 
@@ -50,15 +49,6 @@ func notFound(w http.ResponseWriter, r *http.Request) {
 }
 
 func homepage(w http.ResponseWriter, r *http.Request) {
-	for _, adapter := range config.Adapters {
-		log.Println("  Name: ", adapter.Name)
-		log.Println("  Type: ", adapter.Type)
-		log.Println("  Arguments")
-		for k, v := range adapter.Arguments {
-			log.Println("      ", k, v)
-		}
-	}
-
 	tplIndex.ExecuteWriter(pongo2.Context{"adapters": config.Adapters}, w)
 }
 
@@ -71,8 +61,14 @@ func preview(w http.ResponseWriter, r *http.Request) {
 	adapter := findAdapter(vars["name"])
 
 	// Get most recent file in adapter.Arguments["folder"]
-	// Provide to template
+	// Provide to template for display
+
+	headers := []string{"Header1", "Header2", "Header3"}
+	rows := [][]string{}
+	rows = append(rows, []string{"1", "2", "3"})
+	rows = append(rows, []string{"4", "5", "6"})
+	rows = append(rows, []string{"7", "8", "9"})
 
 	tplPreview.ExecuteWriter(pongo2.Context{
-		"adapter": adapter}, w)
+		"adapter": adapter, "headers": headers, "rows": rows}, w)
 }

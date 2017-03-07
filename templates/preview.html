@@ -40,31 +40,19 @@
 <table>
   <thead>
     <tr>
-      <th scope="col">Supplier</th>
-      <th scope="col">Reference</th>
-      <th scope="col">Date</th>
-      <th class="numeric" scope="col">Amount</th>
+      {% for header in headers %}
+      <th scope="col">{{ header }}</th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
+    {% for row in rows %}
     <tr>
-      <td>ACME Inc</td>
-      <td>A12345</td>
-      <td>01/01/2017</td>
-      <td class="numeric">31,792</td>
+      {% for cell in row %}
+      <td>{{ cell }}</td>
+      {% endfor %}
     </tr>
-    <tr>
-      <td>ACME Inc</td>
-      <td>A12346</td>
-      <td>08/01/2017</td>
-      <td class="numeric">35,740</td>
-    </tr>
-    <tr>
-      <td>ACME Inc</td>
-      <td>A12347</td>
-      <td>11/01/2017</td>
-      <td class="numeric">26,683</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
 
