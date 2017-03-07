@@ -25,35 +25,20 @@
   <div class="grid-row">
     <div class="column-one-half">
       <h2 class="heading-medium">
-        Pending review (1)
+        Pending review ({{adapters|length}})
       </h2>
       <ul>
+        {% for adapter in adapters %}
         <li>
-          Spend over £25,000<br/>
-          <a class="button" href="/preview">Preview and publish</a>
+          <h3 class="heading-small">{{ adapter.Title }}</h3>
+          <p>{{ adapter.Description }}</p>
+          <a class="button" href="/preview/{{ adapter.Name }}">Preview and publish</a>
         </li>
+        {% endfor %}
       </ul>
     </div>
     <div class="column-one-half">
-      <h2 class="heading-medium">
-        Adapters (3)
-      </h2>
-      <div>
-        <ul>
-          <li>
-            Spend over £25,000 - <a href="">Edit</a>
-          </li>
-          <li>
-            Organogram - <a href="">Edit</a>
-          </li>
-          <li>
-            Planning applications - <a href="">Edit</a>
-          </li>
-        </ul>
-
-        <br/>
-        <a class="button" href="/add">Add a new adapter</a>
-      </div>
+    &nbsp;
     </div>
   </div>
 

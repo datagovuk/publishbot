@@ -3,6 +3,7 @@ port: 2112
 adapters:
   - name: spending
     title: Spend data over £25,000
+    description: A monthly-updated list of all financial transactions spending over £25,000 made by department, as part of the Government's commitment to transparency in expenditure
     type: directory
     arguments:
       folder: ./test-folder

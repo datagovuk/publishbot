@@ -10,10 +10,11 @@ import (
 var config Config = Config{}
 
 type AdapterConfig struct {
-	Name      string
-	Title     string
-	Type      string
-	Arguments map[string]string
+	Name        string
+	Title       string
+	Description string
+	Type        string
+	Arguments   map[string]string
 }
 
 type Config struct {

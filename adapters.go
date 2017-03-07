@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/fsnotify/fsnotify"
@@ -15,7 +16,17 @@ func RunAdapter(config AdapterConfig) {
 	}
 }
 
+func findAdapter(name string) AdapterConfig {
+	for _, adapter := range config.Adapters {
+		if adapter.Name == name {
+			return adapter
+		}
+	}
+	return AdapterConfig{}
+}
+
 func directoryAdapter(config AdapterConfig) {
+	log.Println("Watching for changes in ", config.Arguments["folder"])
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		log.Fatal(err)
@@ -27,9 +38,9 @@ func directoryAdapter(config AdapterConfig) {
 		for {
 			select {
 			case event := <-watcher.Events:
-				log.Println("event:", event)
-				if event.Op&fsnotify.Write == fsnotify.Write {
-					log.Println("modified file:", event.Name)
+				if event.Op == fsnotify.Create {
+					fmt.Println("Created new file")
+					// Notify user
 				}
 			case err := <-watcher.Errors:
 				log.Println("error:", err)
