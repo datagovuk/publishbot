@@ -2,11 +2,12 @@ package main
 
 import (
 	"crypto/subtle"
-	"net/http"
-	"os"
-
+	"encoding/csv"
 	"github.com/flosch/pongo2"
 	"github.com/gorilla/mux"
+	"net/http"
+	"os"
+	"path/filepath"
 )
 
 func setup_routes() {
@@ -60,14 +61,21 @@ func preview(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	adapter := findAdapter(vars["name"])
 
-	// Get most recent file in adapter.Arguments["folder"]
 	// Provide to template for display
-
-	headers := []string{"Header1", "Header2", "Header3"}
+	files, _ := filepath.Glob(filepath.Join(adapter.Arguments["folder"], "*.csv"))
+	headers := []string{}
 	rows := [][]string{}
-	rows = append(rows, []string{"1", "2", "3"})
-	rows = append(rows, []string{"4", "5", "6"})
-	rows = append(rows, []string{"7", "8", "9"})
+
+	if len(files) == 1 {
+
+		f, _ := os.Open(files[0])
+		r := csv.NewReader(f)
+		records, _ := r.ReadAll()
+		f.Close()
+
+		headers = records[0]
+		rows = records[1:]
+	}
 
 	tplPreview.ExecuteWriter(pongo2.Context{
 		"adapter": adapter, "headers": headers, "rows": rows}, w)

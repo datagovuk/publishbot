@@ -36,33 +36,35 @@
     </div>
   </div>
 
+  {% if not headers %}
+    <p>There is no data file to process</p>
+  {% else %}
+    <table>
+      <thead>
+        <tr>
+          {% for header in headers %}
+          <th scope="col">{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-<table>
-  <thead>
-    <tr>
-      {% for header in headers %}
-      <th scope="col">{{ header }}</th>
-      {% endfor %}
-    </tr>
-  </thead>
-  <tbody>
-    {% for row in rows %}
-    <tr>
-      {% for cell in row %}
-      <td>{{ cell }}</td>
-      {% endfor %}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-  <br/>
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <button class="button">Publish</button>
-      &nbsp;
-      <a style="font-size:smaller;" href="/status">Cancel</a>
-    </div>
-  </div>
-
+      <br/>
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <button class="button">Publish</button>
+          &nbsp;
+          <a style="font-size:smaller;" href="/status">Cancel</a>
+        </div>
+      </div>
+  {% endif%}
 {% endblock %}
